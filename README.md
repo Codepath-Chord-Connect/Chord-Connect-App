@@ -29,13 +29,11 @@ Chord Connect is a social app that connects musicians within your proximity, col
 **Required Must-have Stories**
 
 *User can post a new photo to their feed
-* User can create a new account (sign up)
-* User can log in
-* User can log out
-* User can see other users in a close vicinity
-* User can like a photo
-* User can follow/unfollow another user
+* User can create a new account (sign up), log in, and log out
+* User can see other users who are in a close vicinity
 * User can send messages to other users
+* User can upload audio files
+* User can see audio files of close-by users
 
 
 **Optional Nice-to-have Stories**
@@ -51,6 +49,8 @@ Chord Connect is a social app that connects musicians within your proximity, col
 * User can see a list of their followers
 * User can see a list of their following
 * User can view other user’s profiles and see their photo feed
+* User can like a photo
+* User can follow/unfollow another user
 
 
 ### 2. Screen Archetypes
@@ -66,16 +66,19 @@ Chord Connect is a social app that connects musicians within your proximity, col
 * Home Screen
     * User can view feed and profiles of other users
    
+* Chatting List Screen
+    * User can see a list of users and previous chats. 
+
 * Chatting Screen
-    * User can chat with other users. 
-    * 
+    * User can receive and see messages from/with other users.
+    
 * Upload screen
     * User can upload a file (either a video or a audio file)
 
-* Post Screen (Optional)
+* Post Screen *(Optional)*
     * User can see a detailed view of the post with comments etc.
 
-* Duet Screen (Optional)
+* Duet Screen *(Optional)*
     * User can duet with other users' posts here.
 
 
@@ -84,7 +87,7 @@ Chord Connect is a social app that connects musicians within your proximity, col
 
 **TAB NAVIGATION** (Screen to Screen)
 * Home Screen
-* Search Screen
+* Search Screen *(Optional)*
 * Upload Screen
 * Profile Screen
 
@@ -101,9 +104,12 @@ Chord Connect is a social app that connects musicians within your proximity, col
 * Search Screen 
     * => Home screen
 * Profile Screen
+    * => Chat List Screen
+* Chat List Screen
+    * => Home Screen
     * => Chat Screen
 * Chat Screen
-    * => Home Screen
+    * => Chat List Screen
 * Upload Screen
     * => Home Screen
 
