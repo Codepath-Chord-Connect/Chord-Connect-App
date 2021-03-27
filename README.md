@@ -119,16 +119,76 @@ Chord Connect is a social app that connects musicians within your proximity, col
 [Add picture of your hand sketched wireframes in this section]
 <img src="CODEPATH WIREFRAME.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-
-### [BONUS] Interactive Prototype
-
-## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+--> Audio Files
+
+Property      | Type            | Description
+------------- | ----------------|------------
+objectId      | String          | unique id for the audio file
+updatedAt     | Date            | date for when the audio file was updated
+createdAt     | Date            | date for when the audio file was created
+user          | Pointer <User>  | user that created and uploaded the audio file
+audio_file    | File            | the actual audio file
+
+--> Connections
+
+Property      | Type              | Description
+------------- | ------------------|------------
+objectId      | String            | unique id for the connection
+updatedAt     | Date              | date for when the connection was updated
+createdAt     | Date              | date for when the connection was created
+user          | Pointer <User>    | user that sent or received the connection request from another user
+user_friend   | Pointer <User>    | user's connection who the user sent the request to or recieved the request from
+  
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+---> Main Screen
+
+- (Read/GET) Query all posts where users can view different users and their audio files
+- Code Snippet
+    protected void queryAudioFiles() {
+        ParseQuery<AudioFiles> query = ParseQuery.getQuery(Audio.class);
+        query.addDescendingOrder(AudioFiles.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<AudioFiles>() {
+            @Override
+            public void done(List<AudioFiles> audio_files, ParseException e) {
+                if(e != null){
+                    Log.i(TAG, "Issue with creating a post");
+                    return;
+                }
+                for(AudioFiles audio_file: audio_files){
+                    Log.i(TAG, "Post: " + audio_file.getDescription());
+                }
+                allAudioFiles.addAll(audio_files);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+---> Profile Screen
+
+- (Read/GET) Query all posts where users can view their own profile pic and audio files
+- Code Snippet
+    protected void queryAudioFiles() {
+        ParseQuery<AudioFiles> query = ParseQuery.getQuery(Audio.class);
+        query.include(AudioFiles.KEY_USER);
+        query.whereEqualTo(AudioFiles.KEY_USER, ParseUser.getCurrentUser());
+        query.addDescendingOrder(AudioFiles.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<AudioFiles>() {
+            @Override
+            public void done(List<AudioFiles> audio_files, ParseException e) {
+                if(e != null){
+                    Log.i(TAG, "Issue with creating a post");
+                    return;
+                }
+                for(AudioFiles audio_file: audio_files){
+                    Log.i(TAG, "Post: " + audio_file.getDescription());
+                }
+                allAudioFiles.addAll(audio_files);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
