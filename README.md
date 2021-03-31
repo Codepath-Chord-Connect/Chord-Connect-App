@@ -29,7 +29,7 @@ Chord Connect is a social app that connects musicians within your proximity, col
 **Required Must-have Stories**
 
 *User can post a new photo to their feed
-* User can create a new account (sign up), log in, and log out
+* User can create a new account (sign up), log in, and log out[X]
 * User can see an overview of other users (Profile image and 1-2 audio files) who are in a close vicinity
 * User can view their own profile
 * User can send messages to other users
